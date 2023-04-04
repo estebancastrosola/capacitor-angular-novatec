@@ -4,11 +4,15 @@
     <header>
         <h2>My beautiful web</h2>
     </header>
-    <router-outlet></router-outlet>
+
+    <div id="router-content">
+        <router-outlet></router-outlet>
+    </div>
+
 
     <div id="button-menu">
-        <button>Camera</button>
-        <button>Geolocation</button>
-        <button>Local Storage</button>
+        <button routerLink="/camera">Camera</button>
+        <button routerLink="/geolocation">Geolocation</button>
+        <button routerLink="/localStorage">Local Storage</button>
     </div>
 </div>
