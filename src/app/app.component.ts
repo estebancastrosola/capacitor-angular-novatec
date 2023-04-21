@@ -12,7 +12,4 @@ export class AppComponent {
     constructor(private router:Router) {
     }
 
-    goToCamera() {
-        this.router.navigate(['/camera'])
-    }
 }
