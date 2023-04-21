@@ -6,10 +6,14 @@ import {Component, OnInit} from '@angular/core';
 })
 export class GeolocationComponent implements OnInit{
 
+    longitude = 0;
+    latitude= 0;
     constructor() {}
     ngOnInit(): void {
-        navigator.geolocation.getCurrentPosition(function(pos){
-            console.log(pos.coords.latitude + pos.coords.longitude)
+        navigator.geolocation.getCurrentPosition((pos)=>{
+            console.log(pos.coords.latitude +' '+ pos.coords.longitude);
+            this.latitude = pos.coords.longitude;
+            this.longitude = pos.coords.longitude;
         },function(){
             console.log('User not allowed')
         },{timeout:10000})
