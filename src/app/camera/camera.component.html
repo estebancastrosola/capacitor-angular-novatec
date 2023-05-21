@@ -1,5 +1,5 @@
-<div class="">
-    <h3>Angular Webcam Capture Image from Camera</h3>
+<h3>Angular Webcam Capture Image from Camera</h3>
+<div *ngIf="!isNative">
     <div class="">
         <webcam
             [width]=300
@@ -9,4 +9,7 @@
             (imageCapture)="captureImg($event)"
         ></webcam>
     </div>
+</div>
+<div *ngIf="isNative">
+    <button (click)="takePicture()">Take photo</button>
 </div>

@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import {Observable, Subject} from "rxjs";
 import {WebcamImage} from "ngx-webcam";
+import { Camera, CameraResultType } from '@capacitor/camera';
+import {Capacitor} from "@capacitor/core";
+
 
 @Component({
   selector: 'app-camera',
@@ -12,7 +15,11 @@ export class CameraComponent {
     public webcamImage!: WebcamImage;
     private nextWebcam: Subject<any> = new Subject();
     sysImage = '';
-    ngOnInit() {}
+
+    isNative = false;
+    ngOnInit() {
+        this.isNative = Capacitor.isNativePlatform();
+    }
     public getSnapshot(): void {
         this.trigger.next(void 0);
     }
@@ -27,4 +34,14 @@ export class CameraComponent {
     public get nextWebcamObservable(): Observable<any> {
         return this.nextWebcam.asObservable();
     }
+
+
+    //native
+    takePicture = async () => {
+        const image = await Camera.getPhoto({
+            quality: 90,
+            allowEditing: false,
+            resultType: CameraResultType.Uri
+        });
+    };
 }
