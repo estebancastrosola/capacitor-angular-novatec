@@ -12,7 +12,7 @@ export class GeolocationComponent implements OnInit{
     ngOnInit(): void {
         navigator.geolocation.getCurrentPosition((pos)=>{
             console.log(pos.coords.latitude +' '+ pos.coords.longitude);
-            this.latitude = pos.coords.longitude;
+            this.latitude = pos.coords.latitude;
             this.longitude = pos.coords.longitude;
         },function(){
             console.log('User not allowed')
